@@ -1,0 +1,77 @@
+@import "compass/css3";
+
+/*==========  Variables  ==========*/
+
+$pg-bg:             #dcdcdc;
+$rr-bg:             #232E39;
+$rr-bg-hover:       darken($rr-bg, 10%);
+
+$rr-height:         200px;
+$rr-slant:          100px;
+$rr-gutter:         1%;
+$rr-width:          50%;
+
+
+/*==========  Styles  ==========*/
+
+// Scaffolding
+body {
+	background-color: $pg-bg;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	color: lighten($rr-bg, 40%);
+}
+h2 { text-transform: uppercase; }
+.rr > div { text-align: center; }
+
+// Construct the rectangles
+.rr {
+	position: relative;
+	height: $rr-height;
+	background: $rr-bg;
+	&.rr-left {
+		z-index: 1;
+		float: left;
+		width: $rr-width + 5%; // + 5% adjustment for slant offset
+	}
+	&.rr-right {
+		z-index: 2;
+		float: right;
+		width: $rr-width - $rr-gutter - 5%; // - 5% adjustment for slant offset
+	}
+}
+
+// Add slanted edges
+.rr:after,
+.rr:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	width: 0;
+	height: 0;
+}
+.rr-left:after {
+	right: 0;
+	border-left: $rr-slant solid $rr-bg;
+	border-bottom: $rr-height solid $pg-bg;
+}
+.rr-right:before {
+	left: -$rr-slant;
+	border-right: $rr-slant solid $rr-bg;
+	border-top: $rr-height solid rgba(0, 0, 0, 0); // overlaps .rr-left
+}
+
+// Add padding around inner content
+.rr-left > div {
+	margin-right: $rr-slant;
+	margin-left: $rr-slant/2;
+}
+.rr-right > div {
+	margin-right: $rr-slant/2;
+	margin-left: $rr-slant/4;
+}
+
+// Hover styles
+.rr:hover { background: $rr-bg-hover; }
+.rr-left:hover:after { border-left-color: $rr-bg-hover; }
+.rr-right:hover:before { border-right-color: $rr-bg-hover; }

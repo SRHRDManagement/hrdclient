@@ -1,0 +1,6 @@
+tr th, tr td{text-align: center}
+.not-active {
+   pointer-events: none;
+   cursor: default;
+   opacity: 0.5;
+}

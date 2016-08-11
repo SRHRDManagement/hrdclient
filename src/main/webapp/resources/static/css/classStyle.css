@@ -1,0 +1,65 @@
+.not-active {
+   pointer-events: none;
+   cursor: default;
+   opacity: 0.5;
+}
+.red th{color: red}
+.green th{color: green}
+.blue th{color: blue}
+.attBor{border: 2px solid grey}
+.white{color: white}
+.spacecourse{margin-top: 6px; transform: scale(0.98,1); padding: 10px; border-radius: 12%}
+    
+.box h3{
+	text-align:center;
+	position:relative;
+}
+.box {
+	background:#FFF;
+	margin:40px auto;
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-topright:80px;
+    -moz-border-radius-bottomleft:80px;
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-top-left-radius:0px;
+    -webkit-border-top-right-radius:80px;
+    -webkit-border-bottom-left-radius:80px;
+    -webkit-border-bottom-right-radius:0px;
+    border-top-left-radius:0px;
+    border-top-right-radius:80px;
+    border-bottom-left-radius:80px;
+    border-bottom-right-radius:0px;
+
+	
+}
+
+/*==================================================
+ * Effect 7
+ * ===============================================*/
+.effect7
+{
+    position:relative;
+    box-shadow:0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.effect7:before, .effect7:after
+{
+	content:"";
+    position:absolute; 
+    z-index:-1;
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:0;
+    bottom:0;
+    left:10px;
+    right:10px;
+    border-radius:100px / 10px;
+} 
+.effect7:after
+{
+    right:10px; 
+    left:auto; 
+    transform:skew(8deg) rotate(3deg);
+}
+.pagination > .activeClass > a, .pagination > .activeClass > span, .pagination > .activeClass > a:hover, .pagination > .activeClass > span:hover, .pagination > .activeClass > a:focus, .pagination > .activeClass > span:focus{
+	background-color: rgb(0, 152, 225);
+	color: #fff;
+}

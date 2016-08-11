@@ -1,0 +1,75 @@
+/*==========  Variables  ==========*/
+/*==========  Styles  ==========*/
+body {
+  background-color: #dcdcdc;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  color: #7a94ae;
+}
+
+h2 {
+  text-transform: uppercase;
+}
+
+.rr > div {
+  text-align: center;
+}
+
+.rr {
+  position: relative;
+  height: 200px;
+  background: #232E39;
+}
+.rr.rr-left {
+  z-index: 1;
+  float: left;
+  width: 55%;
+}
+.rr.rr-right {
+  z-index: 2;
+  float: right;
+  width: 44%;
+}
+
+.rr:after,
+.rr:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+
+.rr-left:after {
+  right: 0;
+  border-left: 100px solid #232E39;
+  border-bottom: 200px solid #dcdcdc;
+}
+
+.rr-right:before {
+  left: -100px;
+  border-right: 100px solid #232E39;
+  border-top: 200px solid transparent;
+}
+
+.rr-left > div {
+  margin-right: 100px;
+  margin-left: 50px;
+}
+
+.rr-right > div {
+  margin-right: 50px;
+  margin-left: 25px;
+}
+
+.rr:hover {
+  background: #101519;
+}
+
+.rr-left:hover:after {
+  border-left-color: #101519;
+}
+
+.rr-right:hover:before {
+  border-right-color: #101519;
+}
