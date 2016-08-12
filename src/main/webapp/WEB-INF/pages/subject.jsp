@@ -34,13 +34,13 @@
                                         </tr>
                                     </thead>
                                     <tbody  style="color: #000" id="resultSubject">
-                                        <tr ng-repeat="subject in subjects" ng-init="tapTheme=selectTheme(subject.SUBACTIVE)">
+                                        <tr ng-repeat="subject in subjects" ng-init="tapTheme=selectTheme(subject.SUBACTIVE)" style="color: {{tapTheme[3]}}">
                                             <td><a ng-click="getSubjectById(subject.SUBID)" class="{{tapTheme[2]}}" data-animation="blur" data-plugin="custommodal" data-overlaySpeed="100" data-overlayColor="#36404a" data-toggle="modal" href="#subject-modal"><i class="fa fa-pencil"></i></a></td>
                                             <td>{{$index+1}}</td>
                                             <td>{{subject.SUBNAME}}</td>
                                             <td>{{subject.SUBDATE}}</td>
                                             <td>{{subject.SUBDESC}}</td>
-                                            <td><button ng-click="disableSubject(subject.SUBID)" class="btn {{tapTheme[0]}} btn-xs {{tapTheme[2]}}">{{tapTheme[1]}}</button></td>
+                                            <td><button ng-click="disableSubject(subject.SUBID)" class="btn {{tapTheme[0]}} btn-xs">{{tapTheme[1]}}</button></td>
                                         </tr>
                                     </tbody>
                                 </table>

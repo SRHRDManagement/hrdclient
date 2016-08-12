@@ -1,8 +1,5 @@
 <jsp:include page="header.jsp"></jsp:include>
-<script src="${pageContext.request.contextPath}/resources/static/js/jQuery-2.1.4.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/static/js/jquery.form.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/resources/static/js/studentAngular.js"></script>
-<script src="${pageContext.request.contextPath}/resources/static/js/studentJquery.js"></script>
 <style>
     .red th{color: red}
     .green th{color: green}
@@ -53,14 +50,20 @@
 			                                                <div class="col-md-4">
 			                                                    <div class="form-group">
 			                                                        <label for="iFirstName">FirstName<b>*</b></label>
-			                                                        <input type="text" name="iFirstName" id="iFirstName" ng-model="iFirstName" parsley-trigger="change" required placeholder="Enter first name" class="form-control">
+			                                                        <div class="input-group">
+																		<input type="text" ng-model="iFirstName" class="form-control" placeholder="student first name" id="iFirstName" required name="iFirstName">
+																		<span class="input-group-addon bg-inverse b-0 text-white"><i class="icon-user"></i></span>
+																	</div>
 			                                                    </div>
 			                                                </div>
 			                                                
 			                                                <div class="col-md-3">
 			                                                  <div class="form-group">
 			                                                    <label for="iLastName">LastName<b>*</b></label>
-			                                                    <input type="text" name="iLastName" id="iLastName" ng-model="iLastName" parsley-trigger="change" required placeholder="Enter last name" class="form-control">
+			                                                    <div class="input-group">
+																	<input type="text" ng-model="iLastName" class="form-control" placeholder="student last name" id="iLastName" required name="iLastName">
+																	<span class="input-group-addon bg-inverse b-0 text-white"><i class="icon-user"></i></span>
+																</div>
 			                                                  </div>
 			                                                </div>
 			                                                
@@ -68,8 +71,8 @@
 			                                                  <div class="form-group">
 			                                                    <label for="iDob">Birthdate<b>*</b></label>
 			                                                  	<div class="input-group">
-																	<input type="text" ng-model="iDob" class="form-control" placeholder="year-month-day" id="iDob" required name="iDob" >
-																	<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
+																	<input type="text" ng-model="iDob" class="form-control" placeholder="year-month-day" id="iDob" required name="iDob">
+																	<span class="input-group-addon bg-inverse b-0 text-white"><i class="icon-calender"></i></span>
 																</div>
 			                                                  </div>
 			                                                </div>
@@ -88,41 +91,31 @@
 				                                                </div>
 				                                             </div>
 			
-			                                            <div class="col-md-3">
+			                                            <div class="col-md-4">
 			                                              <div class="form-group">
 			                                                <label for="iPhone">Phone<b>*</b></label>
-			                                                <input type="text" name="iPhone" ng-model="iPhone" id="iPhone" data-mask="(999)-999-999" class="form-control">
+			                                                <div class="input-group">
+																<input type="text" ng-model="iPhone" class="form-control" data-mask="(999)-999-999*" placeholder="phone number" id="iPhone" required name="iPhone">
+																<span class="input-group-addon bg-inverse b-0 text-white"><i class="icon-phone "></i></span>
+															</div>
 			                                              </div>
 			                                            </div>
 			                                            <div class="col-md-3">
 			                                              <div class="form-group">
 			                                                <label for="iNationality">Nationality<b>*</b></label>
-			                                                <select class="form-control" parsley-trigger="change" id="iNationality" name="iNationality" ng-model="iNationality">
-			                                                    <optgroup label="Asia">
-			                                                        <option>Cambodian</option>
-			                                                        <option>Thai</option>
-			                                                        <option>Vietnam</option>
-			                                                        <option>Chinese</option>
-			                                                        <option>Lao</option>
-			                                                        <option>Indian</option>
-			                                                        <option>Korean</option>
-			                                                    </optgroup>
-			                                                    <optgroup label="Europe">
-			                                                        <option>English</option>
-			                                                        <option>Spain</option>
-			                                                        <option>Portuguese</option>
-			                                                        <option>Poles</option>
-			                                                        <option>Swedish</option>
-			                                                        <option>Ukrainians</option>
-			                                                        <option>Germans</option>
-			                                                    </optgroup>
-			                                                </select>
+			                                                <div class="input-group">
+																<input type="text" ng-model="iNationality" class="form-control" placeholder="Cambodian, Thai, Lao, ...." id="iNationality" required name="iNationality">
+																<span class="input-group-addon bg-inverse b-0 text-white"><i class="icon-globe"></i></span>
+															</div>
 			                                              </div>
 			                                            </div>
-			                                             <div class="col-md-4">
+			                                             <div class="col-md-3">
 			                                              <div class="form-group">
 			                                                <label for="iSocailId">Social Id</label>
-			                                                <input type="text" id="iSocailId" name="iSocailId" ng-model="iSocailId" parsley-trigger="change" required placeholder="Enter facebook, twitter ... id" class="form-control">
+			                                                <div class="input-group">
+																<input type="text" ng-model="iSocailId" class="form-control" placeholder="Enter facebook, twitter ... id" id="iSocailId" required name="iSocailId">
+																<span class="input-group-addon bg-primary b-0 text-white"><i class=" icon-social-facebook"></i></span>
+															</div>
 			                                              </div>
 			                                            </div>
 			                                        </div> <!--end left 9-->
@@ -165,38 +158,56 @@
 			                                        <div class="col-md-4">
 			                                            <div class="form-group">
 			                                                <label for="iFatherName">Father name</label>
-			                                                <input type="text" name="iFatherName" id="iFatherName" ng-model="iFatherName" parsley-trigger="change" required placeholder="Enter father's full name" class="form-control">
+			                                                <div class="input-group">
+																<input type="text" ng-model="iFatherName" class="form-control" placeholder="father's full name" id="iFatherName" required name="iFatherName">
+																<span class="input-group-addon bg-warning b-0 text-white"><i class="icon-user"></i></span>
+															</div>
 			                                            </div>
 			                                        </div>
 			                                        <div class="col-md-4">
 			                                            <div class="form-group">
 			                                                <label for="iFatherPhone">Phone</label>
-			                                                <input type="text" name="iFatherPhone" id="iFatherPhone" ng-model="iFatherPhone" placeholder="father's phone number" class="form-control">
+			                                                <div class="input-group">
+																<input type="text" ng-model="iFatherPhone" class="form-control" data-mask="(999)-999-999*" placeholder="father phone number" id="iFatherPhone" required name="iFatherPhone">
+																<span class="input-group-addon bg-warning b-0 text-white"><i class="icon-phone "></i></span>
+															</div>
 			                                            </div>
 			                                        </div>
 			                                        <div class="col-md-4">
 			                                            <div class="form-group">
 			                                                <label for="iFatherJob">Occupation</label>
-			                                                <input type="text" name="iFatherJob" id="iFatherJob" ng-model="iFatherJob" parsley-trigger="change" required placeholder="father's job" class="form-control">
+			                                                <div class="input-group">
+																<input type="text" ng-model="iFatherJob" class="form-control" placeholder="father's job" id="iFatherJob" required name="iFatherJob">
+																<span class="input-group-addon bg-warning b-0 text-white"><i class="icon-flag"></i></span>
+															</div>
 			                                            </div>
 			                                        </div>
 			
 			                                        <div class="col-md-4">
 			                                            <div class="form-group">
 			                                              <label for="iMotherName">Mother name</label>
-			                                              <input type="text" name="iMotherName" id="iMotherName" ng-model="iMotherName" parsley-trigger="change" required placeholder="Enter mother's full name" class="form-control" id="userName">
+			                                              <div class="input-group">
+																<input type="text" ng-model="iMotherName" class="form-control" placeholder="mother's full name" id="iMotherName" required name="iMotherName">
+																<span class="input-group-addon bg-warning b-0 text-white"><i class="icon-user-female"></i></span>
+															</div>
 			                                            </div>
 			                                        </div>
 			                                    <div class="col-md-4">
 			                                      <div class="form-group">
 			                                        <label for="iMotherPhone">Phone</label>
-			                                        <input type="text" name="iMotherPhone" id="iMotherPhone" ng-model="iMotherPhone" placeholder="mother's phone number" class="form-control">
+			                                        <div class="input-group">
+														<input type="text" ng-model="iMotherPhone" class="form-control" data-mask="(999)-999-999*" placeholder="father phone number" id="iMotherPhone" required name="iMotherPhone">
+														<span class="input-group-addon bg-warning b-0 text-white"><i class="icon-phone "></i></span>
+													</div>
 			                                      </div>
 			                                    </div>
 			                                    <div class="col-md-4">
 			                                      <div class="form-group">
 			                                        <label for="iMotherJob">Occupation</label>
-			                                        <input type="text" name="iMotherJob" id="iMotherJob" ng-model="iMotherJob" parsley-trigger="change" required placeholder="mother's job" class="form-control">
+			                                        <div class="input-group">
+														<input type="text" ng-model="iMotherJob" class="form-control" placeholder="mother's job" id="iMotherJob" required name="iMotherJob">
+														<span class="input-group-addon bg-warning b-0 text-white"><i class="icon-flag"></i></span>
+													</div>
 			                                      </div>
 			                                    </div>
 			
@@ -254,4 +265,6 @@
  			});
  		});	
 	</script>-->
+<script src="${pageContext.request.contextPath}/resources/static/js/studentAngular.js"></script>
+<script src="${pageContext.request.contextPath}/resources/static/js/studentJquery.js"></script>
 <jsp:include page="footer.jsp"></jsp:include>

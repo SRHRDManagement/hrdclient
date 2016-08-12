@@ -43,6 +43,7 @@ genApp.controller("subjectCtr", function($scope, $http, sweet) {
 			$scope.newSubName=$scope.subject.SUBNAME;
 			$scope.newSubDate=$scope.subject.SUBDATE;
 			$scope.newSubDesc=$scope.subject.SUBDESC;
+			$scope.subAct=$scope.subject.SUBACTIVE;
 		});
 	}
 	
@@ -81,11 +82,12 @@ genApp.controller("subjectCtr", function($scope, $http, sweet) {
 	}
 	
 	$scope.selectTheme = function(theme) {
-		if(theme) return subjectState=['btn-success', 'active', 'active'];
-		else return subjectState=['btn-danger', 'disabled', 'not-active'];
+		if(theme) return subjectState=['btn-success', 'active', 'active', 'black'];
+		else return subjectState=['btn-danger', 'disabled', 'not-active', 'grey'];
 	}
 	
 	$scope.disableSubject = function(sub_id) {
+		$scope.getSubjectById(sub_id);
 		sweet.show({
 			title: "Do you want to delete this subject?",
 			  text: "You need to type 'agree' to confirm, or another word to cancel! Remember that after you confirm this operation, you can not enable it back!",
@@ -105,7 +107,7 @@ genApp.controller("subjectCtr", function($scope, $http, sweet) {
             	swal("Cancelled", "You not change the state of Subject :)", "error");
             	return false;
             }
-    		var disableSubject={'SUBID':sub_id, 'SUBACTIVE':false};
+    		var disableSubject={'SUBID':sub_id, 'SUBACTIVE':!$scope.subAct};
             $http.put("http://localhost:8080/rest/subject/delete", disableSubject).success(function(response) {
             	swal("SUCCESSFUL", "You change state of subject successfully! ", "success");
             	$scope.getSubject();

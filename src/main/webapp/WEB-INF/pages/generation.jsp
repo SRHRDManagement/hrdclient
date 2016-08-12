@@ -157,7 +157,6 @@
 </div>
 <script src="${pageContext.request.contextPath}/resources/static/plugins/custombox/dist/custombox.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/plugins/custombox/dist/legacy.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/static/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/js/generationAngular.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/js/generationJquery.js"></script>
 <jsp:include page="footer.jsp"></jsp:include>

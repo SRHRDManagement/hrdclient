@@ -1,8 +1,10 @@
+//var host="http://192.168.178.144:8080";
+var host="http://localhost:8080";
 var genApp=angular.module("studentApp", ['hSweetAlert']);
 genApp.controller("studentCtr", function($scope, $http, sweet) {
 	
 	$scope.getGenerationNotFinish = function() {
-		$http.get("http://localhost:8080/rest/generation/generation-not-finish").then(function(response) {	
+		$http.get(host+"/rest/generation/generation-not-finish").then(function(response) {	
 			if(response.data.STATUS){
 				$scope.generationNotFinish = response.data.DATA;
 				$scope.genIdNotFinish=$scope.generationNotFinish.GENID;
@@ -24,7 +26,7 @@ genApp.controller("studentCtr", function($scope, $http, sweet) {
 	};
 	
 	$scope.getStudents = function() {
-		$http.get("http://localhost:8080/rest/student").then(function(response) {
+		$http.get(host+"/rest/student").then(function(response) {
 			$scope.students = response.data.DATA;
 		});
 	};
@@ -38,7 +40,7 @@ genApp.controller("studentCtr", function($scope, $http, sweet) {
 	
 	$("#iAvatar").change(function(){
 			var formData = new FormData();
-			var uploadImgPath="http://localhost:8080/resources/static/images/avatars/";
+			var uploadImgPath=host+"/resources/static/images/avatars/";
 			formData.append('image',  $("#iAvatar")[0].files[0]);
 	     	$.ajax({
 	            url: "/rest/student/avatar",
@@ -76,7 +78,7 @@ genApp.controller("studentCtr", function($scope, $http, sweet) {
 		'STUFATHERNAME':$scope.iFatherName, 'STUFATHERPHONE':iFatherPhone, 'STUFATHERJOB':$scope.iFatherJob,
 		'STUMOTHERNAME':$scope.iMotherName, 'STUMOTHERPHONE':iMotherPhone, 'STUMOTHERJOB':$scope.iMotherJob};
 		
-		$http.post("http://localhost:8080/rest/student", studentData).success(function(response) {
+		$http.post(host+"/rest/student", studentData).success(function(response) {
 			sweet.show($scope.iLastName+' '+$scope.iFirstName, "Get ready into the system!");
 			$.Notification.notify('success','bottom left','STUDENT', 'New student was insert sucessfully!');
 			$scope.iFirstName=null;
