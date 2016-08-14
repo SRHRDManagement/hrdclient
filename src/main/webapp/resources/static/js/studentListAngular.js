@@ -125,6 +125,11 @@ genApp.controller("studentListCtr", function($scope, $http, sweet) {
 			if(gender=='m') return gender=['male', '#42a5f5'];
 			else return gender=['female', '#c62828'];
 		}
+		
+		$scope.selectThemeStatus = function(status) {
+			if(status=='active') return status='btn-success';
+			else return status='btn-inverse';
+		}
 	
 	
 	$scope.imgUrl=host+"/resources/static/images/avatars/thumbnails/";

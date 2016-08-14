@@ -76,10 +76,10 @@
                             <a href="${pageContext.request.contextPath}/home/index" class="waves-effect"><i class="ti-home"></i> <span> Dashboard </span> </a>
                         </li>
                         <li class="has_sub">
-                            <a href="#" class="waves-effect"><i class="ti-pencil-alt"></i><span>Study Management</span></a>
+                            <a href="#" class="waves-effect active"><i class="ti-pencil-alt"></i><span>Study Management</span></a>
                             <ul class="list-unstyled">
                                 <li><a href="${pageContext.request.contextPath}/generation/index"><i class="fa fa-institution"></i>Generation</a></li>
-                                <li><a class="active" href="${pageContext.request.contextPath}/course/index"><i class="fa fa-mortar-board "></i>Course</a></li>
+                                <li class="active"><a href="${pageContext.request.contextPath}/course/index"><i class="fa fa-mortar-board "></i>Course</a></li>
                                 <li><a href="${pageContext.request.contextPath}/class/index"><i class="fa fa-sitemap"></i>Class</a></li>
                                 <li><a href="${pageContext.request.contextPath}/subject/index"><i class="fa fa-trophy"></i>Subject</a></li>
 
@@ -88,17 +88,11 @@
                         <li class="has_sub">
                             <a href="#" class="waves-effect"><i class="fa fa-graduation-cap"></i> <span> Student </span> </a>
                             <ul class="list-unstyled">
+                                <li><a href="${pageContext.request.contextPath}/student/index"><i class="fa fa-list-alt"></i>List</a></li>
                                 <li><a href="${pageContext.request.contextPath}/student/register"><i class="fa fa-plus-square"></i>Register</a></li>
-                                <li><a href="${pageContext.request.contextPath}/student/index"><i class="fa fa-list-alt"></i>Student List</a></li>
                             </ul>
                         </li>
-                        <li class="has_sub">
-                            <a href="#" class="waves-effect"><i class="md  md-people"></i><span> Instructor </span> </a>
-                            <ul class="list-unstyled">
-                                <li><a href="components-grid.html"><i class="fa fa-plus-circle"></i>New Instructor</a></li>
-                                <li><a href="components-widgets.html"><i class="fa fa-bars"></i>Instructor List</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="${pageContext.request.contextPath}/staff/index" class="waves-effect"><i class="md  md-people"></i><span> Instructor </span> </a></li>
                         <li>
                             <a href="user.html" class="waves-effect"><i class="fa fa-user"></i> <span> User </span> </a>
                         </li><hr>

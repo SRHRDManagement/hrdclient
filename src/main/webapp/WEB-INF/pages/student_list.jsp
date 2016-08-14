@@ -38,19 +38,21 @@
                                       <th>FullName</th>
                                       <th>Gender</th>
                                       <th>Birthdate</th>
-                                      <th>phone</th>
+                                      <th>Phone</th>
                                       <th>Nationality</th>
+                                      <th>Status</th>
                                   	</tr>
 							    </thead>
 							    <tbody>
-							        <tr dir-paginate="stu in students| filter: searchKeyword | itemsPerPage:7" ng-init="gender=fillGender(stu.STUGENDER)">
+							        <tr dir-paginate="stu in students| filter: searchKeyword | itemsPerPage:7" ng-init="gender=fillGender(stu.STUGENDER); themeStatus=selectThemeStatus(stu.STUSTATUS)">
                                       <td><a href="#" ng-click="getStudentById(stu.STUID)"><i class="fa fa-pencil"></i></a></td>
-                                      <td><div class="center-cropped"><a href="#"><img class="img-circle" src="{{imgUrl}}{{stu.STUAVATAR}}" width="38"/></a></div></td>
+                                      <td><div class="center-cropped"><a href="#"><img class="img-circle" src="{{imgUrl}}{{stu.STUAVATAR}}" width="40" style="border: 1px solid grey; height: 40px;"/></a></div></td>
                                       <td><a href="#">{{stu.STULASTNAME}} {{stu.STUFIRSTNAME}}</a></td>
                                       <td style="color: {{gender[1]}}">{{gender[0]}}</td>
                                       <td>{{stu.STUDOB}}</td>
                                       <td>{{stu.STUPHONE}}</td>
-                                      <td>{{stu.STUNATIONALITY}}</td>  
+                                      <td>{{stu.STUNATIONALITY}}</td>
+                                      <td><button class="btn btn-xs {{themeStatus}}">{{stu.STUSTATUS}}</button></td>
                                   </tr>
 							    </tbody>
 							</table>
