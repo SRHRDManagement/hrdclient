@@ -1279,7 +1279,7 @@ table[data-toggle="table"] {
 .tablesaw tbody th {
   font-size: inherit;
   line-height: inherit;
-  padding: 10px !important;
+  padding: 10px;
 }
 .tablesaw-stack tbody tr,
 .tablesaw tbody tr {

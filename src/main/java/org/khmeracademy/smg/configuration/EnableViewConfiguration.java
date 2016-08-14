@@ -26,10 +26,8 @@ public class EnableViewConfiguration extends WebMvcConfigurerAdapter {
 		registry.addViewController("/student").setViewName("student_list");
 		registry.addViewController("/student/register").setViewName("student_register");
 		registry.addViewController("/student/index").setViewName("student_list");
-		
+		registry.addViewController("/location").setViewName("location");
 		registry.addViewController("").setViewName("upload");
-		registry.addViewController("/login").setViewName("login");
-		registry.addViewController("/home").setViewName("index");
 		
 		// Errors
 		registry.addViewController("/access-denied").setViewName("/error/403");

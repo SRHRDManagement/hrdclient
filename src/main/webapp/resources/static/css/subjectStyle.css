@@ -1,4 +1,4 @@
-tr th, tr td{text-align: center}
+tr th, tr td{text-align: center; color: #000000}
 .not-active {
    pointer-events: none;
    cursor: default;

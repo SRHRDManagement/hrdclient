@@ -8,6 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School System MGR</title>
+	<link href='https://fonts.googleapis.com/css?family=Kreon' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/images/favicon_1.ico">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/plugins/morris/morris.css">
     <link href="${pageContext.request.contextPath}/resources/static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />

@@ -1,4 +1,20 @@
+var host="http://192.168.1.104:8080";
+//var host="http://localhost:8080";
 $(document).ready(function() {
+	
+	var options = {
+			url: host+"/resources/static/file/allNation.json",
+
+			getValue: "nationality",
+
+			list: {
+				match: {
+					enabled: true
+				}
+			}
+		};
+	
+	$("#iNationality").easyAutocomplete(options);
 	
 	jQuery('#iDob').datepicker({
 		autoclose: true,
@@ -7,3 +23,8 @@ $(document).ready(function() {
 	});
                 
 });
+function initialize() {
+    var input = document.getElementById('iAddress');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+ }
+ google.maps.event.addDomListener(window, 'load', initialize);

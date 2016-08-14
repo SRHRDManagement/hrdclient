@@ -1,0 +1,26 @@
+tr th, tr td{text-align: center; color: #000000;}
+div img{text-align: center;}
+.not-active {
+   pointer-events: none;
+   cursor: default;
+   opacity: 0.5;
+}
+.crop {
+    height: 40px;
+    overflow: hidden;
+}
+.center-cropped {
+  object-fit: none; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+  width: 100%;
+}
+.highlighted { background: yellow }
+#updateView b{color: red}
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th{
+	vertical-align: middle;
+	font-family: 'Kreon', serif;
+	font-size: 1.2em;
+}
+.tablesaw td, .tablesaw tbody th{
+	padding: 2px !important;
+}
