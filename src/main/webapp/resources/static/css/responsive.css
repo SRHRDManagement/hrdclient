@@ -112,6 +112,10 @@ File: Responsive
   .container-alt {
     width: 750px;
   }
+  div.imgAvatar img{width: 53%;}
+}
+@media (min-width: 1367px) {
+  div.imgAvatar img{width: 35%;}
 }
 @media (min-width: 992px) {
   .container-alt {

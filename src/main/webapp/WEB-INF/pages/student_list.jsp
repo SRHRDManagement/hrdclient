@@ -52,7 +52,7 @@
                                       <td>{{stu.STUDOB}}</td>
                                       <td>{{stu.STUPHONE}}</td>
                                       <td>{{stu.STUNATIONALITY}}</td>
-                                      <td><button class="btn btn-xs {{themeStatus}}">{{stu.STUSTATUS}}</button></td>
+                                      <td><button class="btn btn-xs {{themeStatus[0]}}"><span class="{{themeStatus[1]}}"></span></button></td>
                                   </tr>
 							    </tbody>
 							</table>

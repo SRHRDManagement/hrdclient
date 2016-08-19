@@ -57,7 +57,7 @@
                                     <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile</a></li>
                                     <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>
                                     <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li>
-                                    <li><a href="javascript:void(0)"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -73,16 +73,17 @@
                     <ul>
                         <!--<li class="text-muted menu-title">Navigation</li>-->
                         <li>
-                            <a href="${pageContext.request.contextPath}/home/index" class="waves-effect"><i class="ti-home"></i> <span> Dashboard </span> </a>
+                            <a href="${pageContext.request.contextPath}/home/index" class="waves-effect active"><i class="ti-home"></i> <span> Dashboard </span> </a>
                         </li>
                         <li class="has_sub">
-                            <a href="#" class="waves-effect active"><i class="ti-pencil-alt"></i><span>Study Management</span></a>
+                            <a href="#" class="waves-effect"><i class="ti-pencil-alt"></i><span>Study Management</span></a>
                             <ul class="list-unstyled">
                                 <li><a href="${pageContext.request.contextPath}/generation/index"><i class="fa fa-institution"></i>Generation</a></li>
-                                <li class="active"><a href="${pageContext.request.contextPath}/course/index"><i class="fa fa-mortar-board "></i>Course</a></li>
+                                <li><a href="${pageContext.request.contextPath}/course/index"><i class="fa fa-mortar-board "></i>Course</a></li>
                                 <li><a href="${pageContext.request.contextPath}/class/index"><i class="fa fa-sitemap"></i>Class</a></li>
                                 <li><a href="${pageContext.request.contextPath}/subject/index"><i class="fa fa-trophy"></i>Subject</a></li>
-
+								<li><a href="${pageContext.request.contextPath}/student/enroll"><i class="fa fa-exchange"></i>Enroll <b>Student</b></a></li>
+								<li><a href="${pageContext.request.contextPath}/staff/enroll"><i class="fa  fa-male"></i>Enroll <b>Staff</b></a></li>
                             </ul>
                         </li>
                         <li class="has_sub">
@@ -94,9 +95,9 @@
                         </li>
                         <li><a href="${pageContext.request.contextPath}/staff/index" class="waves-effect"><i class="md  md-people"></i><span> Instructor </span> </a></li>
                         <li>
-                            <a href="user.html" class="waves-effect"><i class="fa fa-user"></i> <span> User </span> </a>
+                            <a href="${pageContext.request.contextPath}/user/index" class="waves-effect"><i class="fa fa-user"></i> <span> User </span> </a>
                         </li><hr>
-                        <li><a href="ui-portlets.html" class="waves-effect"><i class="fa fa-check-square-o"></i><span> Attendance </span></a></li>
+                        <li><a href="${pageContext.request.contextPath}/attendance/index" class="waves-effect"><i class="fa fa-check-square-o"></i><span> Attendance </span></a></li>
                         <li><a href="score.html" class="waves-effect"><i class="fa fa-adn"></i><span> Score </span></a></li>
                     </ul>
                     <div class="clearfix"></div>

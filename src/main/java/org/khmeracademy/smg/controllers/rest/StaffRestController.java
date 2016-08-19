@@ -138,6 +138,14 @@ public class StaffRestController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	//get request from angular to get staff not user
+	@RequestMapping(value="staffs-not-user",method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> getStaffNotUser(){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/staff/staffs-not-user", HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
 	//get request from angular to update student by id
 	@RequestMapping(method = RequestMethod.PUT)
 	public ResponseEntity<Map<String , Object>> updateStaff(@RequestBody AddStaff addStaff){

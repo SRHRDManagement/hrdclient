@@ -2,7 +2,7 @@ var genApp=angular.module("courseApp", ['hSweetAlert']);
 genApp.controller("courseCtr", function($scope, $http, sweet) {
 	
 	$scope.getGeneration = function() {
-		$http.get("http://localhost:8080/rest/generation").then(function(response) {
+		$http.get(host+"/rest/generation").then(function(response) {
 			$scope.generations = response.data.DATA;
 			if(response.data.STATUS){
 				$scope.getCourseByGeneration($scope.generations[$scope.generations.length-1].GENID);
@@ -24,7 +24,7 @@ genApp.controller("courseCtr", function($scope, $http, sweet) {
 	}
 	
 	$scope.getGenerationNotFinish = function() {
-		$http.get("http://localhost:8080/rest/generation/generation-not-finish").then(function(response) {
+		$http.get(host+"/rest/generation/generation-not-finish").then(function(response) {
 			$scope.generationNotFinish = response.data.DATA;
 			$scope.generationNotFinishStatus = response.data.STATUS;
 			$scope.genIdNotFinish=$scope.generationNotFinish.GENID;
@@ -32,7 +32,7 @@ genApp.controller("courseCtr", function($scope, $http, sweet) {
 	}
 	
 	$scope.getCourseByGeneration = function(gen_id) {
-		$http.get("http://localhost:8080/rest/course/"+gen_id).then(function(response) {
+		$http.get(host+"/rest/course/"+gen_id).then(function(response) {
 			$scope.courses = response.data.DATA;
 			$scope.currentGen = $scope.generations.map(function (item) {return item.GENID;}).indexOf(gen_id);
 			if(response.data.STATUS){
@@ -45,7 +45,7 @@ genApp.controller("courseCtr", function($scope, $http, sweet) {
 	
 	$scope.addCourse = function() {
 		var couData={'COUNAME':$scope.modCouName, 'COUSTARTDATE':$scope.modCouStartDate, 'COUENDDATE':$scope.modCouEndDate, 'GENID':$scope.genIdNotFinish, 'COUISFINISH':false};
-		$http.post("http://localhost:8080/rest/course", couData).success(function(response) {
+		$http.post(host+"/rest/course", couData).success(function(response) {
 			$scope.getCourseByGeneration($scope.genIdNotFinish);
 			$.Notification.notify('success','bottom left','GENERATION', 'New course was create sucessfully!');
 			$("#btnShowAddCourseView").val('plus');
@@ -76,7 +76,7 @@ genApp.controller("courseCtr", function($scope, $http, sweet) {
 	}
 	
 	$scope.getCourseById = function(cou_id) {
-		$http.get("http://localhost:8080/rest/course/get-course-by-id/"+cou_id).then(function(response) {
+		$http.get(host+"/rest/course/get-course-by-id/"+cou_id).then(function(response) {
 			$scope.courseById = response.data.DATA;
 			$scope.couId=$scope.courseById.COUID;
 			$scope.newCouName=$scope.courseById.COUNAME;
@@ -87,7 +87,7 @@ genApp.controller("courseCtr", function($scope, $http, sweet) {
 	
 	$scope.updateCourse = function() {
 		var updateData={'COUID':$scope.couId, 'COUNAME':$scope.newCouName, 'COUSTARTDATE':$scope.newCouStartDate, 'COUENDDATE':$scope.newCouEndDate};
-		$http.put("http://localhost:8080/rest/course", updateData).success(function(response) {
+		$http.put(host+"/rest/course", updateData).success(function(response) {
 			$scope.getCourseByGeneration($scope.genIdNotFinish);
 			$.Notification.notify('custom','bottom left','COURSE', 'New course was updated sucessfully!');
 		});
@@ -114,7 +114,7 @@ genApp.controller("courseCtr", function($scope, $http, sweet) {
             	return false;
             }
     		var disableGen={'COUID':id, 'COUISFINISH':true};
-            $http.put("http://localhost:8080/rest/course/"+id, disableGen).success(function(response) {
+            $http.put(host+"/rest/course/"+id, disableGen).success(function(response) {
             	swal("SUCCESSFUL", "You change state of course successfully! ", "success");
             	$scope.getCourseByGeneration($scope.generations[$scope.generations.length-1].GENID);
     			$.Notification.notify('warning','bottom left','COURSE', 'Change state of course sucessfully!');

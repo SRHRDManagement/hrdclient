@@ -26,7 +26,7 @@
 						<div class="card-box">
 							<h4 class="m-t-0 header-title"><b>STAFF LIST</b></h4>
 							<!-- <p class="text-muted font-13">you can click on student name to his or her timeline.</p> -->
-							<div class="col-md-offset-10 col-md-2">
+							<div class="col-md-offset-9 col-md-3">
 							<div class="input-group" style="margin-bottom: 5px">
 								<input type="text" ng-model="searchKeyword" class="form-control" placeholder="Search ..." id="searchKeyword" required name="searchKeyword">
 								<span class="input-group-addon bg-primary b-0 text-white"><i class="icon-magnifier"></i></span>
@@ -50,7 +50,7 @@
                                       <td><a href="#">{{sta.STALASTNAME}} {{sta.STAFIRSTNAME}}</a></td>
                                       <td style="color: {{gender[1]}}">{{gender[0]}}</td>
                                       <td>{{sta.STAPHONE}}</td>
-                                      <td><button class="btn btn-xs {{themeStatus}}">{{sta.STASTATUS}}</button></td>  
+                                      <td><button class="btn btn-xs {{themeStatus[0]}}"><span class="{{themeStatus[1]}}"></span></button></td>  
                                   </tr>
 							    </tbody>
 							</table>
@@ -100,17 +100,17 @@
                                       </div>
                                   </div>
                                   
-                                  <div class="col-sm-12 col-md-2 col-lg-1">
-                                    <div class="form-group">
+                                  <div class="col-sm-12 col-md-2 col-lg-2" style="text-align: center;">
+                                    <div class="form-group" style="text-align: left">
                                         <label for="Gender">Gender<b>*</b></label>
                                     </div>
                                     <div class="radio radio-info radio-inline" ng-init="staInGender='m'">
                                         <input type="radio" value="m" name="staInGender" ng-model="staInGender">
-                                        <label for="staInGender">M</label>
+                                        <label for="staInGender">Male</label>
                                     </div>
                                     <div class="radio radio-info radio-inline">
                                         <input type="radio" value="f" name="staInGender" ng-model="staInGender">
-                                        <label for="staInGender">F</label>
+                                        <label for="staInGender">Female</label>
                                     </div>
                                  </div>
 	
@@ -131,16 +131,16 @@
 								</div>
 								</div>
 								<div class="col-sm-12 col-md-6 col-lg-1">
-								<div class="form-group" style="text-align: center">
-									<label for="sAvatar">Photo profile</label><br>
-									<img class="img-rounded" style="width: 35%; height: 35px; border: 1px solid grey;"
+								<div class="form-group imgAvatar" style="text-align: center">
+									<label for="sAvatar">Photo</label><br>
+									<img class="img-rounded" style="height: 35px; border: 1px solid grey;"
 										id="sAvatar" src="${pageContext.request.contextPath}/resources/static/images/default-profile.png" />
 									</div>
 								</div>
 	
-	                            <div class="col-sm-12 col-md-2 col-lg-2">
+	                            <div class="col-sm-12 col-md-1 col-lg-1">
 	                                <div class="form-group text-center m-b-0">
-	                                    <label>Click here</label>
+	                                    <label>Click</label>
 	                                    <button ng-click="addStaff()" ng-disabled="" class="btn btn-primary col-lg-12 waves-effect waves-light" type="button">Save</button>
 	                                </div>
 	                            </div>
@@ -220,7 +220,7 @@
 								</div>
 								<div class="col-sm-12 col-md-2 col-lg-2">
 								<div class="form-group" style="text-align: center;">
-									<label for="sUpAvatar">Photo profile</label><br>
+									<label for="sUpAvatar">Photo</label><br>
 									<img class="img-rounded" style="width: 30%; height: 35px; border: 1px solid grey;"
 										id="sUpAvatar" src="${pageContext.request.contextPath}/resources/static/images/default-profile.png" />
 									</div>

@@ -1,5 +1,5 @@
 //var host="http://192.168.178.144:8080";
-var host="http://localhost:8080";
+////var host="http://localhost:8080";
 var genApp=angular.module("studentListApp", ['hSweetAlert', 'angularUtils.directives.dirPagination']);
 genApp.controller("studentListCtr", function($scope, $http, sweet) {
 	
@@ -122,13 +122,13 @@ genApp.controller("studentListCtr", function($scope, $http, sweet) {
 		};
 		
 		$scope.fillGender = function(gender) {
-			if(gender=='m') return gender=['male', '#42a5f5'];
-			else return gender=['female', '#c62828'];
+			if(gender=='m') return gender=['Male', '#42a5f5'];
+			else return gender=['Female', '#c62828'];
 		}
 		
 		$scope.selectThemeStatus = function(status) {
-			if(status=='active') return status='btn-success';
-			else return status='btn-inverse';
+			if(status=='active') return status=['btn-success', 'glyphicon glyphicon-ok'];
+			else return status=['btn-danger', 'glyphicon glyphicon-ban-circle'];
 		}
 	
 	

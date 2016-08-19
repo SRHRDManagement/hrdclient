@@ -31,5 +31,6 @@
         <script src="${pageContext.request.contextPath}/resources/static/plugins/morris/morris.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/static/plugins/raphael/raphael-min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/static/pages/chartcurrent.js"></script>
+        
     </body>
 </html>

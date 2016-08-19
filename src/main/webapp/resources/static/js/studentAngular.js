@@ -1,6 +1,6 @@
 //var host="http://192.168.178.144:8080";
 //var host="http://192.168.1.104:8080";
-var host="http://localhost:8080";
+//var host="http://localhost:8080";
 var genApp=angular.module("studentApp", ['hSweetAlert']);
 genApp.controller("studentCtr", function($scope, $http, sweet) {
 	
@@ -78,7 +78,7 @@ genApp.controller("studentCtr", function($scope, $http, sweet) {
 
 		var studentData={'STUFIRSTNAME':$scope.iFirstName, 'STULASTNAME':$scope.iLastName, 'STUGENDER':$scope.iGender, 'STUPHONE':iPhone, 
 				'STUDOB':iDob, 'STUADDRESS':iAddress, 'STUNATIONALITY':iNationality, 'STUSOCIALID':$scope.iSocailId, 'STUAVATAR':$scope.iAvatar,
-				'STUSTATUS':"yes", 'GENID': $scope.genIdNotFinish,
+				'STUSTATUS':"active", 'GENID': $scope.genIdNotFinish,
 		'STUFATHERNAME':$scope.iFatherName, 'STUFATHERPHONE':iFatherPhone, 'STUFATHERJOB':$scope.iFatherJob,
 		'STUMOTHERNAME':$scope.iMotherName, 'STUMOTHERPHONE':iMotherPhone, 'STUMOTHERJOB':$scope.iMotherJob};
 		

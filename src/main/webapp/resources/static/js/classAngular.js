@@ -2,7 +2,7 @@ var genApp=angular.module("classApp", ['hSweetAlert']);
 genApp.controller("classCtr", function($scope, $http, sweet) {
 	
 	$scope.getGeneration = function() {
-		$http.get("http://localhost:8080/rest/generation").then(function(response) {
+		$http.get(host+"/rest/generation").then(function(response) {
 			$scope.generations = response.data.DATA;
 			if(response.data.STATUS){
 				$scope.getCourseByGeneration($scope.generations[$scope.generations.length-1].GENID);
@@ -24,7 +24,7 @@ genApp.controller("classCtr", function($scope, $http, sweet) {
 	}
 	
 	$scope.getGenerationNotFinish = function() {
-		$http.get("http://localhost:8080/rest/generation/generation-not-finish").then(function(response) {
+		$http.get(host+"/rest/generation/generation-not-finish").then(function(response) {
 			$scope.generationNotFinish = response.data.DATA;
 			$scope.genIdNotFinish=$scope.generationNotFinish.GENID;
 			$scope.genNameNotFinish=$scope.generationNotFinish.GENNAME;
@@ -32,7 +32,7 @@ genApp.controller("classCtr", function($scope, $http, sweet) {
 	}
 	
 	$scope.getCourseByGeneration = function(gen_id) {
-		$http.get("http://localhost:8080/rest/course/"+gen_id).then(function(response) {
+		$http.get(host+"/rest/course/"+gen_id).then(function(response) {
 			$scope.courses = response.data.DATA;
 			if(response.data.STATUS){
 				$scope.getCourseNotFinish();
@@ -61,7 +61,7 @@ genApp.controller("classCtr", function($scope, $http, sweet) {
 	}
 	
 	$scope.getClassByCourse = function(cou_id) {
-		$http.get("http://localhost:8080/rest/class/"+cou_id).then(function(response) {
+		$http.get(host+"/rest/class/"+cou_id).then(function(response) {
 			$scope.classes = response.data.DATA;
 			$scope.currentCou = $scope.courses.map(function (item) {return item.COUID;}).indexOf(cou_id);
 			if(response.data.STATUS){
@@ -73,7 +73,7 @@ genApp.controller("classCtr", function($scope, $http, sweet) {
 	}
 	
 	$scope.getCourseNotFinish = function() {
-		$http.get("http://localhost:8080/rest/course/course-not-finish").then(function(response) {
+		$http.get(host+"/rest/course/course-not-finish").then(function(response) {
 			$scope.courseNotFinish = response.data.DATA;
 			$scope.courseNotFinishStatus = response.data.STATUS;
 			$scope.couIdNotFinish=$scope.courseNotFinish.COUID;
@@ -102,7 +102,7 @@ genApp.controller("classCtr", function($scope, $http, sweet) {
 	
 	$scope.addClassRoom = function() {
 		var classData={'CLANAME':$scope.addClassName, 'CLADATE':$scope.classInsertDate, 'COUID':$scope.couIdNotFinish, 'CLAACTIVE':true};
-		$http.post("http://localhost:8080/rest/class", classData).success(function(response) {
+		$http.post(host+"/rest/class", classData).success(function(response) {
 			$scope.getClassByCourse($scope.courses[$scope.courses.length-1].COUID);
 			$.Notification.notify('success','bottom left','GENERATION', 'New classroom was insert sucessfully!');
 			$scope.addClassName=null;
@@ -110,7 +110,7 @@ genApp.controller("classCtr", function($scope, $http, sweet) {
 	}
 	
 	$scope.getClassById = function(cla_id) {
-		$http.get("http://localhost:8080/rest/class/get-class-by-id/"+cla_id).then(function(response) {
+		$http.get(host+"/rest/class/get-class-by-id/"+cla_id).then(function(response) {
 			$scope.clas = response.data.DATA;
 			$scope.classId=$scope.clas.CLAID;
 			$scope.newClaName=$scope.clas.CLANAME;
@@ -120,7 +120,7 @@ genApp.controller("classCtr", function($scope, $http, sweet) {
 	
 	$scope.updateClass = function() {
 		var updateData={'CLAID':$scope.classId, 'CLANAME':$scope.newClaName, 'CLADATE':$scope.newClaDate};
-		$http.put("http://localhost:8080/rest/class", updateData).success(function(response) {
+		$http.put(host+"/rest/class", updateData).success(function(response) {
 			$scope.getClassByCourse($scope.courses[$scope.courses.length-1].COUID);
 			$.Notification.notify('custom','bottom left','CLASS', 'Class was updated sucessfully!');
 		})
@@ -147,7 +147,7 @@ genApp.controller("classCtr", function($scope, $http, sweet) {
             	return false;
             }
     		var disableClass={'CLAID':cla_id, 'CLAACTIVE':false};
-            $http.put("http://localhost:8080/rest/class/"+cla_id, disableClass).success(function(response) {
+            $http.put(host+"/rest/class/"+cla_id, disableClass).success(function(response) {
             	swal("SUCCESSFUL", "You change state of class successfully! ", "success");
             	$scope.getClassByCourse($scope.courses[$scope.courses.length-1].COUID);
     			$.Notification.notify('warning','bottom left','CLASS', 'Change state of class sucessfully!');

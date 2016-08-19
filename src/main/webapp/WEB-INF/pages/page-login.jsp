@@ -8,8 +8,6 @@
         <link rel="shortcut icon" href="../favicon.ico"> 
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/css/style1.css" />
-
-
         <link href="${pageContext.request.contextPath}/resources/static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="${pageContext.request.contextPath}/resources/static/css/core.css" rel="stylesheet" type="text/css" />
         <link href="${pageContext.request.contextPath}/resources/static/css/components.css" rel="stylesheet" type="text/css" />

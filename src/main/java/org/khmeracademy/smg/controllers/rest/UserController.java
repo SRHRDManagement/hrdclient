@@ -36,6 +36,13 @@ public class UserController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="get-all-users", method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> getUser(){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/user", HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Map<String , Object>> adduser(@RequestBody AddUser addUser){
 		HttpEntity<Object> request = new HttpEntity<Object>(addUser,header);

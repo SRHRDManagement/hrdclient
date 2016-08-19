@@ -1,5 +1,3 @@
-//var host="http://192.168.178.144:8080";
-var host="http://localhost:8080";
 var uploadImgPath=host+"/resources/static/images/avatars/";
 var genApp=angular.module("staffListApp", ['hSweetAlert', 'angularUtils.directives.dirPagination']);
 genApp.controller("staffListCtr", function($scope, $http, sweet) {
@@ -27,8 +25,8 @@ genApp.controller("staffListCtr", function($scope, $http, sweet) {
 	}
 	
 	$scope.selectThemeStatus = function(status) {
-		if(status=='active') return status='btn-success';
-		else return status='btn-inverse';
+		if(status=='active') return status=['btn-success', 'glyphicon glyphicon-ok'];
+		else return status=['btn-danger', 'glyphicon glyphicon-ban-circle'];
 	}
 	
 	$scope.selectThemePhoto = function(photo) {
