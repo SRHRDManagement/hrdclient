@@ -31,19 +31,27 @@ public class AttendanceRestController {
 	@Autowired
 	private String WS_URL;
 	
-	//get all class by course id *
-	@RequestMapping(value="/{cou_id}", method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> getClassByCourseId(@PathVariable int cou_id){
-		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/class/"+cou_id, HttpMethod.GET , request , Map.class) ;
-		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
-	}
-	
 	//insert new attendance
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Map<String , Object>> addAttendance(@RequestBody AddAttendance att){
 		HttpEntity<Object> request = new HttpEntity<Object>(att, header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/attendance", HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	//update attendance
+	@RequestMapping(method = RequestMethod.PUT)
+	public ResponseEntity<Map<String , Object>> updateAttendance(@RequestBody AddAttendance att){
+		HttpEntity<Object> request = new HttpEntity<Object>(att, header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/attendance", HttpMethod.PUT , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	//check attendance exist
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> checkAttendanceExist(){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/attendance", HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

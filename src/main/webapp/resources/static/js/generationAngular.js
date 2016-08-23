@@ -67,11 +67,11 @@ genApp.controller("generationCtr", function($scope, $http, sweet) {
 	$scope.disableGeneration = function(id) {
 		sweet.show({
 			title: "Is this generation finish?",
-			  text: "You need to type 'yes agree' to confirm, or another word to cancel! Remember that after you confirm this operation, you can not enable it back!",
+			  text: "You need to type 'agree' to confirm, or another word to cancel! Remember that after you confirm this operation, you can not enable it back!",
 			  type: "input",
 			  showCancelButton: true,
 			  closeOnConfirm: false,
-			  inputPlaceholder: "Type 'yes agree' to confirm ..."
+			  inputPlaceholder: "Type 'agree' to confirm ..."
         }, function(inputValue) {
             if(inputValue===false){
             	return false;
@@ -80,7 +80,7 @@ genApp.controller("generationCtr", function($scope, $http, sweet) {
             	swal.showInputError("You must need to type 'yes agree' to confirm!");
                 return false
             }
-            if(inputValue!=='yes agree'){
+            if(inputValue!=='agree'){
             	swal("Cancelled", "You not change the state of Generation :)", "error");
             	return false;
             }

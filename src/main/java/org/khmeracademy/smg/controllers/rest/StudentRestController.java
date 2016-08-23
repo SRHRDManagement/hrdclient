@@ -162,10 +162,10 @@ public class StudentRestController {
 	}
 	
 	//get request from angular to get student attendance
-	@RequestMapping(value="student-attendance/{cla_id}/{att_date}",method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> getStudentAttendance(@PathVariable int cla_id, @PathVariable String att_date){
+	@RequestMapping(value="student-attendance/{cla_id}/{att_date}/{att_shift}",method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> getStudentAttendance(@PathVariable int cla_id, @PathVariable String att_date, @PathVariable String att_shift){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/student/att/"+cla_id+"/"+att_date, HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/student/att/"+cla_id+"/"+att_date+"/"+att_shift, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

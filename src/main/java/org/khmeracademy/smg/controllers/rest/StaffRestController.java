@@ -122,11 +122,19 @@ public class StaffRestController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
-	//get request from angular to get student 
+	//get request from angular to get staff
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> getStaff(){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/staff", HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	//get request from angular to get staff not-in-study-process
+	@RequestMapping(value="not-in-study-process/{cla_id}/{sub_id}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> getStaffNotProcess(@PathVariable int cla_id, @PathVariable int sub_id){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/staff/not-in-study-process/"+cla_id+"/"+sub_id, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

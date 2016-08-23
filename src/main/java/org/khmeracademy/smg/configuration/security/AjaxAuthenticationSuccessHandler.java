@@ -8,8 +8,8 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.PageContext;
 
+import org.khmeracademy.smg.model.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -27,6 +27,8 @@ public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHa
 //			map.put("targetUrl", determineTargetUrl(auth));
 //			
 //			String json = new Gson().toJson(map);
+		
+		 //User user = (User)auth.getPrincipal();
 			
 			response.getWriter().print(determineTargetUrl(auth));
 	        response.getWriter().flush();

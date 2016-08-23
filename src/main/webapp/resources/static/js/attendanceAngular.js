@@ -1,6 +1,25 @@
 var genApp=angular.module("attendanceApp", ['hSweetAlert']);
 genApp.controller("attendanceCtr", function($scope, $http, sweet) {
 	
+	$scope.setShift = function(shift) {
+		$scope.getShift=shift;
+		$scope.getStudentFromClass($scope.classId);
+	};
+	
+	$scope.getStudentFromClass = function(cla_id) {
+		var thisDay=$("#att_date").val();
+		//var thisShift=$("#att_shift").val();
+		$scope.classId=cla_id;
+		$http.get(host+"/rest/student/student-attendance/"+$scope.classId+"/"+thisDay+"/"+$scope.getShift).then(function(response) {
+			$scope.studentsAttendance = response.data.DATA;
+		});
+	};
+	
+	$scope.setToday = function(date) {
+		$scope.toDay=date;
+		$scope.getStudentFromClass($scope.classId);
+	};
+	
 	$scope.getDateToday = function() {
 		var today = new Date();
 		var dd = today.getDate();
@@ -44,44 +63,34 @@ genApp.controller("attendanceCtr", function($scope, $http, sweet) {
 			$scope.classId=$scope.clas.CLAID;
 			$scope.newClaName=$scope.clas.CLANAME;
 			$scope.newClaDate=$scope.clas.CLADATE;
-			$scope.getStudentFromClass(cla_id, $scope.toDay);
+			$scope.getStudentFromClass(cla_id);
 		});
 	}
 	
 	$scope.getClassByCourse = function(cou_id) {
 		$http.get(host+"/rest/class/"+cou_id).then(function(response) {
 			$scope.classes = response.data.DATA;
+			$scope.newClaName=$scope.classes[0].CLANAME;
+			$scope.classId=$scope.classes[0].CLAID;
+			$scope.getStudentFromClass($scope.classId);
 		});
 	}
 	
-	$scope.getStudent = function() {
-		$http.get(host+"/rest/student/not-enroll").then(function(response) {
-			$scope.students = response.data.DATA;
-			if($scope.students.length==0) $("#noNotEnroll").show();
-			else $("#noNotEnroll").hide();
-		});
-	};
-	
-	$scope.getStudentFromClass = function(cla_id) {
-		var thisDay=$("#att_date").val();
-		$http.get(host+"/rest/student/student-attendance/"+cla_id+"/"+thisDay).then(function(response) {
-			$scope.studentsEnroll = response.data.DATA;
-		});
-	};
-	
 	$scope.submitAttendance = function() {
 		var attDate=$("#att_date").val();
-		var attShift=$("#att_shift").val();
+		//var attShift=$("#att_shift").val();
 		var reason=$('input[name="reason[]"]').map(function(){return $(this).val();}).get();
 		var stuId=$('input[name="stuId[]"]').map(function(){return $(this).val();}).get();
 		var attCbb = $("input[name=cbbAtt]:checked").map(function () {return this.value;}).get();
 		var roleId=$('input[name="roleId[]"]').map(function(){return $(this).val();}).get();
+		var data=null;
 		for(var i=0; i<attCbb.length; i++){
 			var roleId=$("input[name='roleId["+attCbb[i]+"]']:checked").val();
-			var data={'STUID':stuId[attCbb[i]], 'ATTDATE':attDate, 'ATTSHIFT':attShift, 'ATTREASON':reason[attCbb[i]], 'ABSID':roleId};
-			console.log(data);
-			$http.post(host+"/rest/attendance", data);
+			data={'STUID':stuId[attCbb[i]], 'ATTDATE':attDate, 'ATTSHIFT':$scope.getShift, 'ATTREASON':reason[attCbb[i]], 'ABSID':roleId};
+			$http.put(host+"/rest/attendance", data);
+			//$http.post(host+"/rest/attendance", data);
 		}
+		//$scope.getStudentFromClass($scope.currentClass);
 		$.Notification.notify('success','bottom left','ATTENDANCE', 'Attendance controller sucessfully!');
 	};
 	
@@ -95,20 +104,25 @@ genApp.controller("attendanceCtr", function($scope, $http, sweet) {
 		else return gender=['female', '#c62828'];
 	}
 	
-	$scope.backToNotEnroll = function(stu_id) {
-		$http.delete(host+"/rest/student-enroll/"+stu_id).success(function(response) {
-			$scope.getStudent();
-			$scope.getStudentFromClass($scope.genIdNotFinish, $scope.classId);
-		});
-	};
-	
 	$scope.canEnroll=false;
+	$scope.getShift='Morning';
 	$("#noEnroll").hide();
 	$scope.imgUrl=host+"/resources/static/images/avatars/thumbnails/";
-	$scope.newClaName='Any Classroom';
 	$scope.getGenerationNotFinish();
 	$scope.getCourseNotFinish();
-	$scope.getStudent();
+	
+	$scope.autoSelect = function(index, id) {
+		if(id==4) {
+			$(".inputReason:eq("+index+")").attr('disabled', true);
+			$(".inputReason:eq("+index+")").val("");
+		}
+		else $(".inputReason:eq("+index+")").attr('disabled', false);
+		$(".checkbox:eq("+(index+1)+")").prop('checked', true);
+	};
+	
+	$scope.autoUnSelect = function(index) {
+		 $(".checkbox:eq("+(index+1)+")").prop('checked', false);
+	};
 	
 });
 

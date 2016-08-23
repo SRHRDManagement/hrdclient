@@ -17,7 +17,28 @@ public class AddStaff {
 	private String sta_avatar;
 	@JsonProperty("STASTATUS")
 	private String sta_status;
+	private AddEnrollStaff studyProcess;
+	private AddClass clas;
+	private AddSubject subject;
 	
+	public AddEnrollStaff getStudyProcess() {
+		return studyProcess;
+	}
+	public AddClass getClas() {
+		return clas;
+	}
+	public AddSubject getSubject() {
+		return subject;
+	}
+	public void setStudyProcess(AddEnrollStaff studyProcess) {
+		this.studyProcess = studyProcess;
+	}
+	public void setClas(AddClass clas) {
+		this.clas = clas;
+	}
+	public void setSubject(AddSubject subject) {
+		this.subject = subject;
+	}
 	public int getSta_id() {
 		return sta_id;
 	}

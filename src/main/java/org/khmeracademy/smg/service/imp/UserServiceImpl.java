@@ -45,6 +45,9 @@ public class UserServiceImpl implements UserService {
 			u.setUsr_id((Integer)data.get("ID"));
 			u.setUsr_email((String)data.get("EMAIL"));
 			u.setUsr_password((String) data.get("PASSWORD"));
+			u.setUsr_photo((String)data.get("USRAVATAR"));
+			u.setUsr_firstname((String)data.get("USRFIRSTNAME"));
+			u.setUsr_lastname((String)data.get("USRLASTNAME"));
 			
 			List<Role> roles = new ArrayList<Role>();
 			List<HashMap<String, Object>> dataRole = (List<HashMap<String, Object>>) data.get("roles");

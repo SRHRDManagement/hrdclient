@@ -14,6 +14,9 @@ public class User implements UserDetails{
 	private int usr_id;
 	private String usr_email;
 	private String usr_password;
+	private String usr_photo;
+	private String usr_firstname;
+	private String usr_lastname;
 	private int sta_id;
 	private int stu_id;
 	private Date usr_date;
@@ -147,6 +150,30 @@ public class User implements UserDetails{
 	public String getUsername() {
 		// TODO Auto-generated method stub
 		return usr_email;
+	}
+
+	public String getUsr_photo() {
+		return usr_photo;
+	}
+
+	public void setUsr_photo(String usr_photo) {
+		this.usr_photo = usr_photo;
+	}
+
+	public String getUsr_firstname() {
+		return usr_firstname;
+	}
+
+	public void setUsr_firstname(String usr_firstname) {
+		this.usr_firstname = usr_firstname;
+	}
+
+	public String getUsr_lastname() {
+		return usr_lastname;
+	}
+
+	public void setUsr_lastname(String usr_lastname) {
+		this.usr_lastname = usr_lastname;
 	}
 	
 	

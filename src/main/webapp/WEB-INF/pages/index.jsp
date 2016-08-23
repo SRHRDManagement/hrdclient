@@ -197,13 +197,13 @@
                             </div>
                         </div>
 
-                <footer class="footer text-right">
+                <!-- <footer class="footer text-right">
                     <div class="row">
                         <div class="card-box" style="padding: 0px">
                            <p>GAme</p>
                         </div>
                     </div>
-                </footer>
+                </footer> -->
                 <!-- ========== end body content ========== -->
             </div>
         </div>
