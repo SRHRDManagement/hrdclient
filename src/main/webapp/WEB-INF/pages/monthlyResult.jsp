@@ -42,10 +42,10 @@
 		                                                    <td><a href="#">{{rep.stu_lastname}} {{rep.stu_firstname}}</a></td>
 		                                                    <td style="color: {{gender[1]}}">{{gender[0]}}</td>
 		                                                    <td>{{rep.cla_name}}</td>
-		                                                    <td>{{rep.java}}</td>
-		                                                    <td>{{rep.web}}</td>
-		                                                    <td>{{rep.korean}}</td>
-		                                                    <td>{{rep.attendance}}</td>
+		                                                    <td>{{rep.java|number:2}}</td>
+		                                                    <td>{{rep.web|number:2}}</td>
+		                                                    <td>{{rep.korean|number:2}}</td>
+		                                                    <td>{{10-rep.attendance|number:2}}</td>
 		                                                </tr>  
 		                                            </tbody>
 		                                        </table>
