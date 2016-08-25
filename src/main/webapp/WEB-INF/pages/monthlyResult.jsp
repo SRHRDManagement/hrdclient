@@ -33,6 +33,7 @@
 		                                                    <th class="center">Web</th>
 		                                                    <th class="center">Korean</th>
 		                                                    <th class="center">Attendance</th>
+		                                                    <th class="center">Total</th>
 		                                                </tr>
 		                                            </thead>
 			
@@ -46,6 +47,7 @@
 		                                                    <td>{{rep.web|number:2}}</td>
 		                                                    <td>{{rep.korean|number:2}}</td>
 		                                                    <td>{{10-rep.attendance|number:2}}</td>
+		                                                    <td>{{rep.java+rep.web+rep.korean+(10-rep.attendance)|number:2}}</td>
 		                                                </tr>  
 		                                            </tbody>
 		                                        </table>

@@ -35,6 +35,12 @@ genApp.controller("attendanceCtr", function($scope, $http, sweet) {
 		return today = yyyy+'-'+mm+'-'+dd;
 	};
 	
+	$scope.getCurrentMonth = function() {
+		var d = new Date();
+	    var n = d.getMonth();
+	    return n;
+	};
+	
 	$scope.toDay=$scope.getDateToday();
 	
 	$scope.getGenerationNotFinish = function() {
@@ -86,7 +92,7 @@ genApp.controller("attendanceCtr", function($scope, $http, sweet) {
 		var data=null;
 		for(var i=0; i<attCbb.length; i++){
 			var roleId=$("input[name='roleId["+attCbb[i]+"]']:checked").val();
-			data={'STUID':stuId[attCbb[i]], 'ATTDATE':attDate, 'ATTSHIFT':$scope.getShift, 'ATTREASON':reason[attCbb[i]], 'ABSID':roleId};
+			data={'STUID':stuId[attCbb[i]], 'ATTDATE':attDate, 'ATTSHIFT':$scope.getShift, 'ATTREASON':reason[attCbb[i]], 'ABSID':roleId, 'MONID':$scope.getCurrentMonth()+1};
 			$http.put(host+"/rest/attendance", data);
 			//$http.post(host+"/rest/attendance", data);
 		}

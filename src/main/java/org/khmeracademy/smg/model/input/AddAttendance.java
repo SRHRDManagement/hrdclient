@@ -17,6 +17,8 @@ public class AddAttendance {
 	private String att_reason;
 	@JsonProperty("ABSID")
 	private int abs_id;
+	@JsonProperty("MONID")
+	private int mon_id;
 	
 	public int getAtt_id() {
 		return att_id;
@@ -53,5 +55,11 @@ public class AddAttendance {
 	}
 	public void setAbs_id(int abs_id) {
 		this.abs_id = abs_id;
+	}
+	public int getMon_id() {
+		return mon_id;
+	}
+	public void setMon_id(int mon_id) {
+		this.mon_id = mon_id;
 	}
 }
