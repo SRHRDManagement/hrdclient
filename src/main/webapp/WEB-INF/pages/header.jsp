@@ -65,9 +65,7 @@
                                 <a href="#" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="" id="photoProfile" alt="user-img" class="img-circle"> <span><b id="fullName"></b></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i><span id="userName"></span></a></li>
-                                    <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>
                                     <li id="hideText" style="display: none;"></li>
-                                    <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li>
                                     <li><a href="${pageContext.request.contextPath}/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
                                 </ul>
                             </li>
@@ -90,11 +88,19 @@
             <div class="sidebar-inner slimscrollleft">
                 <div id="sidebar-menu">
                     <ul>
-                        <!--<li class="text-muted menu-title">Navigation</li>-->
+                      <security:authorize access="hasAnyRole('ADMIN', 'USER')">
                         <li>
                             <a href="${pageContext.request.contextPath}/home/index" class="waves-effect active"><i class="ti-home"></i> <span> Dashboard </span> </a>
                         </li>
-                       <%-- <security:authorize access="hasRole('ADMIN')"> --%>
+                       </security:authorize>
+                       <security:authorize access="hasRole('STUDENT')">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/profile" class="waves-effect active"><i class="ti-home"></i> <span> Profile </span> </a>
+                        </li>
+                        <li><a href="${pageContext.request.contextPath}/attendance/studentAttendance" class="waves-effect"><i class="fa fa-check-square-o"></i><span> My Attendance </span></a></li>
+                        <li><a href="${pageContext.request.contextPath}/score/studentResult" class="waves-effect"><i class="fa fa-hourglass-2"></i><span> My Result </span></a></li>
+                       </security:authorize>
+                       <security:authorize access="hasRole('ADMIN')">
 							<li class="has_sub">
 	                            <a href="#" class="waves-effect"><i class="ti-pencil-alt"></i><span>Study Management</span></a>
 	                            <ul class="list-unstyled">
@@ -106,7 +112,6 @@
 									<li><a href="${pageContext.request.contextPath}/staff/enroll"><i class="fa  fa-male"></i>Enroll <b>Staff</b></a></li>
 	                            </ul>
 	                        </li>
-						<%-- </security:authorize> --%>
                         
                         <li class="has_sub">
                             <a href="#" class="waves-effect"><i class="fa fa-graduation-cap"></i> <span> Student </span> </a>
@@ -120,7 +125,11 @@
                             <a href="${pageContext.request.contextPath}/user/index" class="waves-effect"><i class="fa fa-user"></i> <span> User </span> </a>
                         </li><hr>
                         <li><a href="${pageContext.request.contextPath}/attendance/index" class="waves-effect"><i class="fa fa-check-square-o"></i><span> Attendance </span></a></li>
-                        <li><a href="${pageContext.request.contextPath}/score/index" class="waves-effect"><i class="fa fa-adn"></i><span> Score </span></a></li>
+                         <li><a href="${pageContext.request.contextPath}/score/setting" class="waves-effect"><i class="fa fa-adn"></i><span> Score Setting </span></a></li>
+                        </security:authorize>
+                        <security:authorize access="hasRole('USER')">
+                        	<li><a href="${pageContext.request.contextPath}/score/index" class="waves-effect"><i class="fa fa-adn"></i><span> Score </span></a></li>
+                        </security:authorize>
                     </ul>
                     <div class="clearfix"></div>
                 </div>

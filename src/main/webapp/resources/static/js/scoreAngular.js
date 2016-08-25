@@ -1,6 +1,14 @@
 var genApp=angular.module("scoreApp", ['hSweetAlert']);
 genApp.controller("scoreCtr", function($scope, $http, sweet) {
 	
+	$scope.generateScoreReport = function() {
+		var sql="SELECT s.stu_firstname, s.stu_lastname, s.stu_gender, cl.cla_name, ";
+		for(var i=0; i<$scope.subjects.length; i++){
+			sql+="MAX(CASE WHEN sc.sub_id="+$scope.subjects[i].SUBID+" THEN sc.sco_score ELSE NULL END)*0.35 AS "+$scope.subjects[i].SUBNAME+", ";
+		}
+		console.log(sql);
+	}
+	
 	$scope.autoSelect = function(index) {
 		$(".checkbox:eq("+(index+1)+")").prop('checked', true);
 	}
@@ -67,6 +75,7 @@ genApp.controller("scoreCtr", function($scope, $http, sweet) {
 			$scope.xSubjectId=$scope.subjects[0].SUBID;
 			$scope.curSubjectName=$scope.subjects[0].SUBNAME;
 			$scope.getStudentScore($scope.xMonthId, $scope.xClassId, $scope.xSubjectId);
+			$scope.generateScoreReport();
 		});
 	}
 	

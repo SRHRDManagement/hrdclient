@@ -13,7 +13,7 @@
                         		<h3>SCORE</h3>
                         		<div class="col-md-2 col-lg-2">
                         		 	<div class="btn-group col-md-12 col-lg-12">
-	                                      <button type="button" class="btn btn-primary dropdown-toggle waves-effect waves-light col-md-12 col-lg-12" data-toggle="dropdown" aria-expanded="false">{{curMonth | uppercase}}</button>
+	                                      <button type="button" class="btn btn-white dropdown-toggle waves-effect waves-light col-md-12 col-lg-12" data-toggle="dropdown" aria-expanded="false">{{curMonth | uppercase}}</button>
 	                                      <ul class="dropdown-menu" role="menu">
 											<li ng-repeat="mon in months"><a href="#" ng-click="getMonthById(mon.MONID)">{{mon.MONNAME | uppercase}} </a></li>
 	                                      </ul>
@@ -21,7 +21,7 @@
 								</div>
 								<div class="col-md-2 col-lg-2">
 									<div class="btn-group col-md-12 col-lg-12">
-	                                      <button type="button" class="btn btn-primary dropdown-toggle waves-effect waves-light col-md-12 col-lg-12" data-toggle="dropdown" aria-expanded="false">{{curClassName|uppercase}} CLASS</button>
+	                                      <button type="button" class="btn btn-white dropdown-toggle waves-effect waves-light col-md-12 col-lg-12" data-toggle="dropdown" aria-expanded="false">{{curClassName|uppercase}} CLASS</button>
 	                                      <ul class="dropdown-menu" role="menu">
 	                                          <li ng-repeat="cla in classes"><a href="#" ng-click="getClassById(cla.CLAID)">{{cla.CLANAME | uppercase}} </a></li>
 	                                      </ul>
@@ -29,7 +29,7 @@
 	                             </div>
                         		 <div class="col-md-2 col-lg-2">
                         		 	<div class="btn-group col-md-12 col-lg-12">
-	                                      <button type="button" class="btn btn-primary dropdown-toggle waves-effect waves-light col-md-12 col-lg-12" data-toggle="dropdown" aria-expanded="false">{{curSubjectName | uppercase}}</button>
+	                                      <button type="button" class="btn btn-white dropdown-toggle waves-effect waves-light col-md-12 col-lg-12" data-toggle="dropdown" aria-expanded="false">{{curSubjectName | uppercase}}</button>
 	                                      <ul class="dropdown-menu" role="menu">
 	                                         <li ng-repeat="sub in subjects"><a href="#" ng-click="getSubjectById(sub.SUBID)">{{sub.SUBNAME | uppercase}} </a></li>
 	                                      </ul>
@@ -43,10 +43,9 @@
 		                                            <thead>
 		                                                <tr>
 		                                                    <th class="col-md-1 col-lg-1">No</th>
-		                                                    <th class="col-md-1 col-lg-1">Photo</th>
-		                                                    <th class="col-md-2 col-lg-3">Student Name</th>
+		                                                    <th class="col-md-3 col-lg-3">Student Name</th>
 		                                                    <th class="col-md-2 col-lg-2">Gender</th>
-		                                                    <th class="col-md-2 col-lg-2">Birthdate</th>
+		                                                    <th class="col-md-3 col-lg-3">Birthdate</th>
 		                                                    <th class="col-md-3col-lg-3 center">Score</th>
 		                                                    <th style="display: none;" class="col-md-1 col-lg-1"><label class="control control--checkbox center" style="transform: scale(1.5);">
 															      <input type="checkbox" class="checkbox" id="selecct_all" value="{{stu.STUID}}" ng-click="studentSelected(stu.STUID)" name="cbbEnroll"/>
@@ -56,9 +55,8 @@
 		                                            </thead>
 			
 		                                            <tbody>
-		                                               <tr ng-repeat="sc in scores" ng-init="gender=fillGender(sc.student.STUGENDER); themePhoto=selectThemePhoto(sc.student.STUAVATAR); colorScore=selectColorScore(sc.SCOSCORE);">
+		                                               <tr ng-repeat="sc in scores" ng-init="gender=fillGender(sc.student.STUGENDER); colorScore=selectColorScore(sc.SCOSCORE);">
 		                                                     <td>{{$index+1}}</td>
-		                                                     <td><a href="#"><img class="img-circle" src="{{imgUrl}}{{themePhoto}}" width="40" style="border: 1px solid grey; height: 40px;"/></a></td>
 		                                                    <td><a href="#">{{sc.student.STULASTNAME}} {{sc.student.STUFIRSTNAME}}<input type="hidden" name="stuId[]" value="{{sc.student.STUID}}"></a></td>
 		                                                    <td style="color: {{gender[1]}}">{{gender[0]}}</td>
 		                                                    <td>{{sc.student.STUDOB}}</td>
