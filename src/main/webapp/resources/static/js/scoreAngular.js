@@ -2,15 +2,35 @@ var genApp=angular.module("scoreApp", ['hSweetAlert']);
 genApp.controller("scoreCtr", function($scope, $http, sweet) {
 	
 	$scope.generateScoreReport = function() {
-		var sql="SELECT s.stu_firstname, s.stu_lastname, s.stu_gender, cl.cla_name, ";
+		var sql="SELECT stu.stu_firstname, stu.stu_lastname, stu.stu_gender, cl.cla_name, ";
 		for(var i=0; i<$scope.subjects.length; i++){
-			sql+="MAX(CASE WHEN sc.sub_id="+$scope.subjects[i].SUBID+" THEN sc.sco_score ELSE NULL END)*0.35 AS "+$scope.subjects[i].SUBNAME+", ";
+			sql+="MAX(CASE WHEN sc.sub_id="+$scope.subjects[i].SUBID+" THEN sc.sco_score ELSE NULL END) AS "+$scope.subjects[i].SUBNAME+", ";
 		}
+		sql+="Sum(abs.abs_score)/(SELECT COUNT(stu_id) FROM smg_score WHERE stu_id=(SELECT stu_id FROM smg_score LIMIT 1)) AS attendance FROM smg_student stu " +
+				"INNER JOIN smg_studentenroll se ON se.stu_id = stu.stu_id " +
+				"LEFT JOIN smg_score sc ON sc.stu_id = se.stu_id " +
+				"INNER JOIN smg_class cl ON se.cla_id =cl.cla_id " +
+				"LEFT JOIN smg_attendance att ON att.stu_id = se.stu_id AND att.mon_id=#{mon_id} " +
+				"LEFT JOIN smg_absent_type abs ON att.abs_id = abs.abs_id " +
+				"LEFT JOIN smg_subject sub ON sc.sub_id = sub.sub_id " +
+				"GROUP BY stu.stu_firstname, " +
+				"stu.stu_lastname, " +
+				"stu.stu_gender, " +
+				"cl.cla_name, " +
+				"att.stu_id";
 		console.log(sql);
+		$http.get(host+"/rest/score/report/"+sql+"/"+8).then(function(response) {
+			$scope.reports=response.data.DATA;
+			console.log($scope.reports);
+		})
 	}
 	
+//	$scope.autoSelect = function(index) {
+//		$(".checkbox:eq("+(index+1)+")").prop('checked', true);
+//	}
+	
 	$scope.autoSelect = function(index) {
-		$(".checkbox:eq("+(index+1)+")").prop('checked', true);
+		$(".checkbox").prop('checked', true);
 	}
 	
 	$scope.insertScore = function() {
@@ -21,6 +41,7 @@ genApp.controller("scoreCtr", function($scope, $http, sweet) {
 		for(var i=0; i<attScore.length; i++){
 			data={'SCOSCORE':scoreNumber[attScore[i]], 'STUID':stuId[attScore[i]], 'SUBID':$scope.xSubjectId, 'MONID':$scope.xMonthId};
 			$http.put(host+"/rest/score", data);
+			console.log(data);
 		}
 		$.Notification.notify('success','bottom left','SCORE', 'Score was inserted or update dynamicly and syncronize sucessfully!');
 	}

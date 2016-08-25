@@ -126,6 +126,7 @@
                         </li><hr>
                         <li><a href="${pageContext.request.contextPath}/attendance/index" class="waves-effect"><i class="fa fa-check-square-o"></i><span> Attendance </span></a></li>
                          <li><a href="${pageContext.request.contextPath}/score/setting" class="waves-effect"><i class="fa fa-adn"></i><span> Score Setting </span></a></li>
+                         <li><a href="${pageContext.request.contextPath}/score/result" class="waves-effect"><i class=" fa fa-hourglass-2"></i><span> Monthly Result </span></a></li>
                         </security:authorize>
                         <security:authorize access="hasRole('USER')">
                         	<li><a href="${pageContext.request.contextPath}/score/index" class="waves-effect"><i class="fa fa-adn"></i><span> Score </span></a></li>

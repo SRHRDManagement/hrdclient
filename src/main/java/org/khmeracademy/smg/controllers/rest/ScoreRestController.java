@@ -40,6 +40,14 @@ public class ScoreRestController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	//get report score
+	@RequestMapping(value="report/{mon_id}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> getReportScore(@PathVariable int mon_id){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/score/report/"+mon_id, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
 	//get month by id
 	@RequestMapping(value="month/{mon_id}", method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> getMonthById(@PathVariable int mon_id){

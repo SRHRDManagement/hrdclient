@@ -3,10 +3,18 @@ package org.khmeracademy.smg.model.input;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AddScore {
+	@JsonProperty("SQLSCORE")
+	private String sql_score;
+	public String getSql_score() {
+		return sql_score;
+	}
+	public void setSql_score(String sql_score) {
+		this.sql_score = sql_score;
+	}
 	@JsonProperty("SCOID")
 	private int sco_id;
 	@JsonProperty("SCOSCORE")
-	private int sco_score;
+	private float sco_score;
 	@JsonProperty("STUID")
 	private int stu_id;
 	@JsonProperty("SUBID")
@@ -17,7 +25,7 @@ public class AddScore {
 	public int getSco_id() {
 		return sco_id;
 	}
-	public int getSco_score() {
+	public float getSco_score() {
 		return sco_score;
 	}
 	public int getStu_id() {
@@ -32,7 +40,7 @@ public class AddScore {
 	public void setSco_id(int sco_id) {
 		this.sco_id = sco_id;
 	}
-	public void setSco_score(int sco_score) {
+	public void setSco_score(float sco_score) {
 		this.sco_score = sco_score;
 	}
 	public void setStu_id(int stu_id) {
